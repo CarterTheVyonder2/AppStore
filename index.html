@@ -122,7 +122,7 @@
             font-size: 0.9em;
             color: #888;
         }
-        /* Popup styles */
+        /* Popup styles (Apple-like) */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -130,7 +130,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.3);
             z-index: 1000;
         }
         .popup {
@@ -140,22 +140,34 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: #fff;
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 12px;
+            width: 300px;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             z-index: 1100;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            padding: 20px;
         }
         .popup h2 {
-            margin: 0 0 15px;
+            margin: 0;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+        }
+        .popup p {
+            margin: 10px 0 20px;
+            font-size: 0.95em;
+            color: #666;
         }
         .popup button {
             background-color: #007aff;
             color: #fff;
             border: none;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-weight: 600;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         .popup button:hover {
             background-color: #005bb5;
@@ -202,12 +214,13 @@
 </main>
 
 <footer>
-    <p>&copy; Apple inc. All rights reserved.</p>
+    <p>&copy; 2024 DynamicDust s.r.o. All rights reserved.</p>
 </footer>
 
 <div class="popup-overlay" id="popupOverlay"></div>
 <div class="popup" id="popup">
-    <h2>Install failed: insufficient storage</h2>
+    <h2>Install Failed</h2>
+    <p>Insufficient storage available.</p>
     <button onclick="closePopup()">OK</button>
 </div>
 
