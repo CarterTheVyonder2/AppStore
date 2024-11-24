@@ -1,93 +1,143 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Store Page</title>
+    <title>Charlie, The Steak | App Store</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
     <style>
+        /* General styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
+            background-color: #f2f2f7;
         }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
+        header, footer {
             background-color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
+            padding: 10px 20px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+        header h1 {
+            font-size: 1.8em;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .app-header {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
         .app-header img {
-            width: 100px;
-            border-radius: 15px;
+            width: 120px;
+            height: 120px;
+            border-radius: 22%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
-        .app-title {
-            font-size: 24px;
-            margin: 10px 0;
+        .app-details {
+            flex: 1;
         }
-        .publisher {
-            color: #666;
-            margin-bottom: 20px;
+        .app-details h2 {
+            font-size: 1.6em;
+            margin: 0 0 10px;
         }
-        .get-button {
+        .app-details p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .spinner {
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            background-color: #007aff;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .get-button:active {
-            background-color: #0056b3;
-        }
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #fff;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #007aff;
             border-radius: 50%;
-            border-top: 3px solid #007aff;
             animation: spin 1s linear infinite;
-            margin-left: 10px;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        .other-apps {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 30px;
+        }
+        .other-apps h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .other-apps .app-list {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .other-apps a {
+            text-decoration: none;
+            text-align: center;
+            color: #333;
+            width: 100px;
+        }
+        .other-apps img {
+            width: 100px;
+            height: 100px;
+            border-radius: 22%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 8px;
+        }
+        footer p {
+            font-size: 0.9em;
+            color: #888;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="app-header">
-            <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple7/v4/4b/4d/77/4b4d7727-a776-7825-d5ef-1e3e327e8b73/source/512x512bb.jpg" alt="App Icon">
-            <h1 class="app-title">Charlie, The Steak</h1>
-            <p class="publisher">Published by: DynamicDust s.r.o.</p>
+<header>
+    <h1>App Store</h1>
+</header>
+
+<main class="container">
+    <section class="app-header">
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple7/v4/4b/4d/77/4b4d7727-a776-7825-d5ef-1e3e327e8b73/source/512x512bb.jpg" alt="Charlie, The Steak Icon">
+        <div class="app-details">
+            <h2>Charlie, The Steak</h2>
+            <p>Developer: DynamicDust s.r.o.</p>
+            <p>Price: FREE</p>
+            <p>Version: 1.2</p>
         </div>
-        <button class="get-button" id="getButton">GET</button>
-    </div>
+        <button style="padding: 10px 20px; background-color: #007aff; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 1em;">
+            Get
+            <span class="spinner"></span>
+        </button>
+    </section>
 
-    <script>
-        const getButton = document.getElementById("getButton");
+    <section class="other-apps">
+        <h3>Other Apps by This Developer</h3>
+        <div class="app-list">
+            <a href="#">
+                <img src="https://is4-ssl.mzstatic.com/image/thumb/Purple/v4/4e/4d/01/4e4d01df-80e6-444c-1a05-b36b32a8475b/source/512x512bb.jpg" alt="Happy Goat">
+                <div>Happy Goat</div>
+            </a>
+            <a href="#">
+                <img src="https://is5-ssl.mzstatic.com/image/thumb/Purple/v4/15/d3/77/15d37752-4213-6be0-6c71-e87885b6bfec/source/512x512bb.jpg" alt="iWorldTip">
+                <div>iWorldTip</div>
+            </a>
+            <a href="#">
+                <img src="https://is3-ssl.mzstatic.com/image/thumb/Purple5/v4/75/9a/18/759a184e-06bb-4638-4336-08a2e4525b26/source/512x512bb.jpg" alt="Pyro! for Messenger">
+                <div>Pyro! for Messenger</div>
+            </a>
+        </div>
+    </section>
+</main>
 
-        getButton.addEventListener("click", () => {
-            if (!getButton.classList.contains("loading")) {
-                getButton.innerHTML = 'LOADING <span class="loading"></span>';
-                getButton.classList.add("loading");
-
-                // Infinite loading simulation
-                setTimeout(() => {
-                    getButton.innerHTML = "GET";
-                    getButton.classList.remove("loading");
-                }, 10000); // Resets after 10 seconds for demo purposes
-            }
-        });
-    </script>
+<footer>
+    <p>&copy; 2024 DynamicDust s.r.o. All rights reserved.</p>
+</footer>
 </body>
 </html>
