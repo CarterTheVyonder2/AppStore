@@ -1,93 +1,155 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charlie, The Steak</title>
+    <meta charset="utf-8">
+    <title>Charlie, The Steak | App Store</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
     <style>
+        /* General styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f3f3f3;
+            background-color: #f2f2f7;
         }
-
-        .app-container {
+        header, footer {
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
+        }
+        header h1 {
+            font-size: 1.8em;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
             padding: 20px;
         }
-
-        .app-icon {
+        .app-header {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .app-header img {
             width: 120px;
             height: 120px;
-            border-radius: 20px;
-            margin: 10px;
+            border-radius: 22%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
-
-        .get-button {
-            display: inline-block;
+        .app-details {
+            flex: 1;
+        }
+        .app-details h2 {
+            font-size: 1.6em;
+            margin: 0 0 10px;
+        }
+        .app-details p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 40px;
             background-color: #007aff;
-            color: #fff;
-            padding: 10px 20px;
             border-radius: 20px;
+            color: white;
             font-weight: bold;
-            text-transform: uppercase;
-            text-align: center;
             cursor: pointer;
             position: relative;
-            overflow: hidden;
+            transition: background-color 0.3s;
         }
-
-        .get-button:active {
+        .button-container:hover {
             background-color: #005bb5;
         }
-
+        .button-container.active {
+            background-color: transparent;
+            cursor: default;
+        }
         .spinner {
             display: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #007aff;
-            border-top: 2px solid transparent;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(0, 122, 255, 0.3);
+            border-top: 3px solid #007aff;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
-
+        .button-container.active .spinner {
+            display: block;
+        }
+        .button-container.active span {
+            display: none;
+        }
         @keyframes spin {
-            0% {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-            100% {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-
+        .other-apps {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 30px;
+        }
+        .other-apps h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .other-apps .app-list {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .other-apps a {
+            text-decoration: none;
+            text-align: center;
+            color: #333;
+            width: 100px;
+        }
+        .other-apps img {
+            width: 100px;
+            height: 100px;
+            border-radius: 22%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 8px;
+        }
+        footer p {
+            font-size: 0.9em;
+            color: #888;
+        }
         /* Popup styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
         .popup {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #fff;
+            background: #fff;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            z-index: 1000;
             text-align: center;
+            z-index: 1100;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-
         .popup h2 {
-            margin: 0;
-            font-size: 18px;
-            color: #333;
+            margin: 0 0 15px;
         }
-
         .popup button {
-            margin-top: 20px;
             background-color: #007aff;
             color: #fff;
             border: none;
@@ -95,37 +157,55 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
         .popup button:hover {
             background-color: #005bb5;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
         }
     </style>
 </head>
 <body>
+<header>
+    <h1>App Store</h1>
+</header>
 
-<div class="app-container">
-    <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple7/v4/4b/4d/77/4b4d7727-a776-7825-d5ef-1e3e327e8b73/source/512x512bb.jpg" alt="App Icon">
-    <h1>Charlie, The Steak</h1>
-    <p>DynamicDust s.r.o.</p>
-    <div class="get-button" id="getButton">
-        GET
-        <div class="spinner"></div>
-    </div>
-</div>
+<main class="container">
+    <section class="app-header">
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple7/v4/4b/4d/77/4b4d7727-a776-7825-d5ef-1e3e327e8b73/source/512x512bb.jpg" alt="Charlie, The Steak Icon">
+        <div class="app-details">
+            <h2>Charlie, The Steak</h2>
+            <p>Developer: DynamicDust s.r.o.</p>
+            <p>Price: FREE</p>
+            <p>Version: 1.2</p>
+        </div>
+        <div class="button-container" id="getButton">
+            <span>Get</span>
+            <div class="spinner"></div>
+        </div>
+    </section>
 
-<!-- Popup -->
-<div class="overlay" id="overlay"></div>
+    <section class="other-apps">
+        <h3>Other Apps by This Developer</h3>
+        <div class="app-list">
+            <a href="#">
+                <img src="https://is4-ssl.mzstatic.com/image/thumb/Purple/v4/4e/4d/01/4e4d01df-80e6-444c-1a05-b36b32a8475b/source/512x512bb.jpg" alt="Happy Goat">
+                <div>Happy Goat</div>
+            </a>
+            <a href="#">
+                <img src="https://is5-ssl.mzstatic.com/image/thumb/Purple/v4/15/d3/77/15d37752-4213-6be0-6c71-e87885b6bfec/source/512x512bb.jpg" alt="iWorldTip">
+                <div>iWorldTip</div>
+            </a>
+            <a href="#">
+                <img src="https://is3-ssl.mzstatic.com/image/thumb/Purple5/v4/75/9a/18/759a184e-06bb-4638-4336-08a2e4525b26/source/512x512bb.jpg" alt="Pyro! for Messenger">
+                <div>Pyro! for Messenger</div>
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; Apple inc. All rights reserved.</p>
+</footer>
+
+<div class="popup-overlay" id="popupOverlay"></div>
 <div class="popup" id="popup">
     <h2>Install failed: insufficient storage</h2>
     <button onclick="closePopup()">OK</button>
@@ -133,27 +213,23 @@
 
 <script>
     const getButton = document.getElementById('getButton');
-    const spinner = getButton.querySelector('.spinner');
-    const overlay = document.getElementById('overlay');
+    const popupOverlay = document.getElementById('popupOverlay');
     const popup = document.getElementById('popup');
 
     getButton.addEventListener('click', () => {
-        getButton.textContent = '';
-        spinner.style.display = 'block';
+        getButton.classList.add('active');
     });
 
-    // Show the popup after 2 minutes
+    // Show the popup after 2 minutes (120 seconds)
     setTimeout(() => {
-        overlay.style.display = 'block';
+        popupOverlay.style.display = 'block';
         popup.style.display = 'block';
     }, 120000);
 
-    // Function to close the popup
     function closePopup() {
-        overlay.style.display = 'none';
+        popupOverlay.style.display = 'none';
         popup.style.display = 'none';
     }
 </script>
-
 </body>
 </html>
