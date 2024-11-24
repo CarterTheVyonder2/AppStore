@@ -49,14 +49,41 @@
             margin: 5px 0;
             color: #555;
         }
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 40px;
+            background-color: #007aff;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        .button-container:hover {
+            background-color: #005bb5;
+        }
+        .button-container.active {
+            background-color: transparent;
+            cursor: default;
+        }
         .spinner {
-            display: inline-block;
+            display: none;
             width: 24px;
             height: 24px;
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #007aff;
+            border: 3px solid rgba(0, 122, 255, 0.3);
+            border-top: 3px solid #007aff;
             border-radius: 50%;
             animation: spin 1s linear infinite;
+        }
+        .button-container.active .spinner {
+            display: block;
+        }
+        .button-container.active span {
+            display: none;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -111,10 +138,10 @@
             <p>Price: FREE</p>
             <p>Version: 1.2</p>
         </div>
-        <button style="padding: 10px 20px; background-color: #007aff; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 1em;">
-            Get
-            <span class="spinner"></span>
-        </button>
+        <div class="button-container" id="getButton">
+            <span>Get</span>
+            <div class="spinner"></div>
+        </div>
     </section>
 
     <section class="other-apps">
@@ -139,5 +166,12 @@
 <footer>
     <p>&copy; 2024 DynamicDust s.r.o. All rights reserved.</p>
 </footer>
+
+<script>
+    const getButton = document.getElementById('getButton');
+    getButton.addEventListener('click', () => {
+        getButton.classList.add('active');
+    });
+</script>
 </body>
 </html>
